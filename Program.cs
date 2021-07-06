@@ -6,6 +6,11 @@ namespace GB_02_02
     {
         static void Main(string[] args)
         {
+            var listImp = new ListImplementation();
+
+            listImp.AddNode(1);
+
+            
             
         }
     }
