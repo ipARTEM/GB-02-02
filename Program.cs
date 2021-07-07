@@ -13,14 +13,14 @@ namespace GB_02_02
 
         internal static void RunDoublyLinkedList()
         {
-            var linkedList = new ListImplementation();
+            var linkedList = new Node();
 
             Console.WriteLine("Запуск двусвязного списка...");
 
             Run(linkedList);
         }
 
-        internal static void Run(ListImplementation linkedList)
+        internal static void Run(Node linkedList)
         {
             if (linkedList == null)
             {
@@ -32,29 +32,7 @@ namespace GB_02_02
             linkedList.AddNode(30);
             linkedList.AddNode(40);
 
-            //var target = "four";
-            //var isRemoved = linkedList.Remove(target);
-
-            //if (isRemoved)
-            //{
-            //    Console.WriteLine($"Element {target} is removed.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Element {target} is not removed.");
-            //}
-
-            //target = "two";
-            //var result = linkedList.Find(target);
-
-            //if (result != null)
-            //{
-            //    Console.WriteLine($"Element {target} is found.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Element {target} is not found.");
-            //}
+            
 
             Console.WriteLine("Печать элементров:");
 
@@ -62,11 +40,47 @@ namespace GB_02_02
             {
                 Console.WriteLine(elem);
             }
+
+            var target = 30;
+            var result = linkedList.FindNode(target);
+
+            Console.WriteLine($"Элемент {result.Value} найден");
+
+
+            //linkedList.RemoveNode(2);
+
+            //linkedList.RemoveNode(20);
+
+            Console.WriteLine("Печать элементров:");
+
+            foreach (var elem in linkedList.Values)
+            {
+                Console.WriteLine(elem);
+            }
+
+            var node = new Node();
+
+            Console.WriteLine("Печать элементров:");
+
+            foreach (var elem in linkedList.Values)
+            {
+                Console.WriteLine(elem);
+            }
+
+
+
+            Console.WriteLine(linkedList.GetCount());
+
+            Console.WriteLine(linkedList.FindNode(30).Value);
+
+            Console.WriteLine(linkedList.FindNode(30).NextNode.Value);
+            Console.WriteLine(linkedList.FindNode(30).PrevNode.Value);
+            
+
+
+
+
         }
-
-
-
-
     }
 
 }

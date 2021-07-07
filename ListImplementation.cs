@@ -29,7 +29,7 @@ namespace GB_02_02
                 var current = _head;
                 do
                 {
-                    values.Add(current.Value);
+                    values.Add(current.Value);      // !
                     current = current.NextNode;
                 }
                 while (current != null);
@@ -57,7 +57,7 @@ namespace GB_02_02
                 _head.NextNode = _tail;
                 _tail.PrevNode = _head;
 
-                
+
             }
 
             _tail.NextNode = newitem;
@@ -65,29 +65,107 @@ namespace GB_02_02
             _tail = newitem;
         }
 
-        public void AddNodeAfter(Node node, int value)
+        public void AddNodeAfter(Node node, int value)    // добавляет новый элемент списка после определённого элемента
         {
-            throw new NotImplementedException();
+            var newNode = new Node { Value = value };
+            var nextItem = node.NextNode;
+            node.NextNode = newNode;
+            newNode.NextNode = nextItem;
         }
 
-        public Node FindNode(int searchValue)
+        public Node FindNode(int searchValue)   // ищет элемент по его значению
         {
-            throw new NotImplementedException();
+            if (_head == null)
+            {
+                return null;
+            }
+
+            var current = _head;
+            var comparer = EqualityComparer<int>.Default;
+            do
+            {
+                if (comparer.Equals(current.Value, searchValue))
+                {
+                    return current;
+                }
+                current = current.NextNode;
+            }
+            while (current != null);
+
+            return null;
         }
 
-        public int GetCount()
+        public int GetCount()     // возвращает количество элементов в списке
         {
-            throw new NotImplementedException();
+            Count= Values.Count();
+            return Count;
         }
 
-        public void RemoveNode(int index)
+        public void RemoveNode(int index)    // удаляет элемент по порядковому номеру 
         {
-            throw new NotImplementedException();
+            var current = FindNode(index);
+
+            if (current == null)
+            {
+                Console.WriteLine("Данный элемент не найден");
+                return;
+            }
+
+            var prev = current.NextNode;
+            var next = current.PrevNode;
+
+            if (prev != null)
+            {
+                prev.NextNode = next;
+            }
+            else
+            {
+                _head = next;
+            }
+
+            if (next != null)
+            {
+                next.PrevNode = prev;
+            }
+            else
+            {
+                _tail = prev;
+            }
+
         }
 
-        public void RemoveNode(Node node)
+        public void RemoveNode(Node node)        // удаляет указанный элемент
         {
-            throw new NotImplementedException();
+            var current = FindNode(node.Value);
+
+            if (current == null)
+            {
+                Console.WriteLine("Данный элемент не найден");
+                
+            }
+
+            var prev = current.NextNode;
+            var next = current.PrevNode;
+
+            if (prev != null)
+            {
+                prev.NextNode = next;
+            }
+            else
+            {
+                _head = next;
+            }
+
+            if (next != null)
+            {
+                next.PrevNode = prev;
+            }
+            else
+            {
+                _tail = prev;
+            }
         }
     }
+
 }
+
