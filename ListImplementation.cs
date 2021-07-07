@@ -11,21 +11,58 @@ namespace GB_02_02
         private Node _head;
         private Node _tail;
 
+
+
         private int Count { get; set; }
 
-
-        public void AddNode(int value)
+        public int[] Values
         {
-            var node = _head;
-
-            while (node.NextNode != null)
+            get
             {
-                node = node.NextNode;
+                var values = new List<int>();
+
+                if (_head == null)
+                {
+                    return values.ToArray();
+                }
+
+                var current = _head;
+                do
+                {
+                    values.Add(current.Value);
+                    current = current.NextNode;
+                }
+                while (current != null);
+
+                return values.ToArray();
+            }
+        }
+
+
+        public void AddNode(int value)     // добавляет новый элемент списка
+        {
+            var newitem = new Node
+            {
+                Value = value
+            };
+
+            if (_head == null)
+            {
+                _head = newitem;
             }
 
-            var newNode = new Node { Value = value };
-            node.NextNode = newNode;
+            if (_tail == null)
+            {
+                _tail = newitem;
+                _head.NextNode = _tail;
+                _tail.PrevNode = _head;
 
+                
+            }
+
+            _tail.NextNode = newitem;
+            newitem.PrevNode = _tail;
+            _tail = newitem;
         }
 
         public void AddNodeAfter(Node node, int value)
