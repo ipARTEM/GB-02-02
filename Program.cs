@@ -39,7 +39,7 @@ namespace GB_02_02
             linkedList.AddNode(60);
 
             linkedList.GetCount();
-            Console.WriteLine("Печать элементров:");
+            Console.WriteLine("Печать элементов:");
 
             foreach (var elem in linkedList.Values)
             {
@@ -51,12 +51,9 @@ namespace GB_02_02
 
             Console.WriteLine($"Элемент {result.Value} найден");
 
-
-           
-
             linkedList.RemoveNode(linkedList.FindNode(50));
 
-            Console.WriteLine("Печать элементров:");
+            Console.WriteLine("Печать элементов:");
 
             foreach (var elem in linkedList.Values)
             {
@@ -69,7 +66,7 @@ namespace GB_02_02
 
             //var node = new Node();
 
-            Console.WriteLine("Печать элементров:");
+            Console.WriteLine("Печать элементов:");
 
             foreach (var elem in linkedList.Values)
             {
