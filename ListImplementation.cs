@@ -111,25 +111,22 @@ namespace GB_02_02
                 return;
             }
 
-            var prev = current.NextNode;
-            var next = current.PrevNode;
-
-            if (prev != null)
+            if (current.NextNode != null)
             {
-                prev.NextNode = next;
+                current.NextNode.NextNode = current.PrevNode;
             }
             else
             {
-                _head = next;
+                _head = current.PrevNode;
             }
 
-            if (next != null)
+            if (current.PrevNode != null)
             {
-                next.PrevNode = prev;
+                current.PrevNode.PrevNode = current.NextNode;
             }
             else
             {
-                _tail = prev;
+                _tail = current.NextNode;
             }
 
         }
@@ -144,25 +141,22 @@ namespace GB_02_02
                 
             }
 
-            var prev = current.NextNode;
-            var next = current.PrevNode;
-
-            if (prev != null)
+            if (current.NextNode != null)
             {
-                prev.NextNode = next;
+                current.NextNode.NextNode = current.PrevNode;
             }
             else
             {
-                _head = next;
+                _head = current.PrevNode;
             }
 
-            if (next != null)
+            if (current.PrevNode != null)
             {
-                next.PrevNode = prev;
+                current.PrevNode.PrevNode = current.NextNode;
             }
             else
             {
-                _tail = prev;
+                _tail = current.NextNode;
             }
         }
     }

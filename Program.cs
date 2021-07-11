@@ -18,6 +18,10 @@ namespace GB_02_02
             Console.WriteLine("Запуск двусвязного списка...");
 
             Run(linkedList);
+
+            
+
+
         }
 
         internal static void Run(Node linkedList)
@@ -31,9 +35,10 @@ namespace GB_02_02
             linkedList.AddNode(20);
             linkedList.AddNode(30);
             linkedList.AddNode(40);
+            linkedList.AddNode(50);
+            linkedList.AddNode(60);
 
-            
-
+            linkedList.GetCount();
             Console.WriteLine("Печать элементров:");
 
             foreach (var elem in linkedList.Values)
@@ -47,18 +52,9 @@ namespace GB_02_02
             Console.WriteLine($"Элемент {result.Value} найден");
 
 
-            //linkedList.RemoveNode(2);
+           
 
-            //linkedList.RemoveNode(20);
-
-            Console.WriteLine("Печать элементров:");
-
-            foreach (var elem in linkedList.Values)
-            {
-                Console.WriteLine(elem);
-            }
-
-            var node = new Node();
+            linkedList.RemoveNode(linkedList.FindNode(50));
 
             Console.WriteLine("Печать элементров:");
 
@@ -67,19 +63,26 @@ namespace GB_02_02
                 Console.WriteLine(elem);
             }
 
+            linkedList.RemoveNode(2);
 
+            linkedList.RemoveNode(linkedList.Values[2]);
 
+            //var node = new Node();
+
+            Console.WriteLine("Печать элементров:");
+
+            foreach (var elem in linkedList.Values)
+            {
+                Console.WriteLine(elem);
+            }
             Console.WriteLine(linkedList.GetCount());
 
             Console.WriteLine(linkedList.FindNode(30).Value);
 
             Console.WriteLine(linkedList.FindNode(30).NextNode.Value);
             Console.WriteLine(linkedList.FindNode(30).PrevNode.Value);
+
             
-
-
-
-
         }
     }
 

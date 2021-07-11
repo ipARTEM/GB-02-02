@@ -106,35 +106,43 @@ namespace GB_02_02
 
         public void RemoveNode(int index)    // удаляет элемент по порядковому номеру 
         {
-            var current = FindNode(index);
+            int count= 1;
 
-            if (current == null)
+            foreach (var item in Values)
             {
-                Console.WriteLine("Данный элемент не найден");
-                return;
-            }
+                if (count == index)
+                {
+                    var current = FindNode(item);
 
-            var prev = current.NextNode;
-            var next = current.PrevNode;
+                    if (current == null)
+                    {
+                        Console.WriteLine("Данный элемент не найден");
+                        return;
+                    }
 
-            if (prev != null)
-            {
-                prev.NextNode = next;
-            }
-            else
-            {
-                _head = next;
-            }
+                    var prev = current.PrevNode;
+                    var next = current.NextNode;
 
-            if (next != null)
-            {
-                next.PrevNode = prev;
-            }
-            else
-            {
-                _tail = prev;
-            }
+                    if (prev != null)
+                    {
+                        prev.NextNode = next;
+                    }
+                    else
+                    {
+                        _head.PrevNode = next;
+                    }
 
+                    if (next != null)
+                    {
+                        next.PrevNode = prev;
+                    }
+                    else
+                    {
+                        _tail = prev;
+                    }
+                }
+                count++;
+            }
         }
 
         public void RemoveNode(Node node)        // удаляет указанный элемент
@@ -147,8 +155,8 @@ namespace GB_02_02
 
             }
 
-            var prev = current.NextNode;
-            var next = current.PrevNode;
+            var prev = current.PrevNode;
+            var next = current.NextNode;
 
             if (prev != null)
             {
@@ -156,7 +164,7 @@ namespace GB_02_02
             }
             else
             {
-                _head = next;
+                _head.PrevNode = next;
             }
 
             if (next != null)
